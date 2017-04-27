@@ -1,7 +1,7 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
 
-function BooleanFieldModel(config) {
+function BooleanFieldModel(config = {}) {
   FieldModel.call(this, config);
 }
 

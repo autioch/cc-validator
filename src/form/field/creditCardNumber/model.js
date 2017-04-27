@@ -1,7 +1,7 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
 
-function CreditCardNumberFieldModel(config) {
+function CreditCardNumberFieldModel(config = {}) {
   FieldModel.call(this, config);
 }
 

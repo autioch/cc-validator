@@ -1,7 +1,7 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
 
-function DateFieldModel(config) {
+function DateFieldModel(config = {}) {
   FieldModel.call(this, config);
 }
 

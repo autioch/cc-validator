@@ -1,7 +1,7 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
 
-function CvvNumberFieldModel(config) {
+function CvvNumberFieldModel(config = {}) {
   FieldModel.call(this, config);
 }
 

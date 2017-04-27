@@ -2,20 +2,26 @@ const { merge, clone } = require('utils');
 const { Emitter } = require('components');
 
 const defaultConfig = {
+  key: null,
   value: false,
   label: '',
   visible: true,
-  required: true
+  required: true,
+  valid: true
 };
 
-function FieldModel(config) {
+function FieldModel(config = {}) {
   Emitter.call(this);
-
   this.config = merge(defaultConfig, config);
+  this.syncValid();
+  this.on('change:value', this.syncValid, this);
 }
 
 FieldModel.prototype = merge(Emitter.prototype, {
   constructor: FieldModel,
+  syncValid() {
+    this.set('valid', this.validate());
+  },
   validate() {
     return true;
   },
