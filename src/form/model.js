@@ -38,7 +38,13 @@ FormModel.prototype = merge(Model.prototype, {
   },
   save() {
     /* Extra check to not rely on other states (DOM). */
-    this.syncValid();
+    this.fields
+      .filter((fieldModel) => fieldModel.get('required'))
+      .forEach((fieldModel) => {
+        fieldModel.set('fresh', false);
+        fieldModel.validate();
+      });
+
     if (!this.get('valid')) {
       return;
     }

@@ -5,9 +5,12 @@ function View(model) {
   this.model = model;
   this.props.forEach((propertyName) => toggleClass(this.el, `is-${propertyName}`, this.model.get(propertyName)));
 
-  /* This is not unbound - lack of time. */
+  /* Autobind props to the classNames. */
   this.props.forEach((propertyName) => {
-    this.model.on(`change:${propertyName}`, () => toggleClass(this.el, `is-${propertyName}`, this.model.get(propertyName)));
+    const className = `is-${propertyName}`;
+
+    /* This is not unbound - lack of time. */
+    this.model.on(`change:${propertyName}`, () => toggleClass(this.el, className, this.model.get(propertyName)));
   });
   this.render();
 }
@@ -20,6 +23,8 @@ View.prototype = {
     return this;
   },
   props: [],
+
+  /* This is implemented, however no views are being removed. */
   remove() {
     /* this.el.remove() is not implemented everywhere. */
     if (this.el.parentNode) {

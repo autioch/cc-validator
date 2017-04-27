@@ -20,7 +20,8 @@ CreditCardNumberFieldView.prototype = merge(View.prototype, {
     if (!this.inputEl) {
       this.inputEl = tag('input.c-field__input', {
         type: 'text',
-        value: this.model.get('value')
+        value: this.model.get('value'),
+        placeholder: 'XXXX-XXXX-XXXX-XXXX'
       });
 
       /* Those aren't unbound - lack of time. */

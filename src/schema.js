@@ -10,17 +10,17 @@ module.exports = {
     key: 'ccNumber',
     type: 'creditCardNumber',
     label: 'Credit card number',
-    value: '123'
+    value: ''
   }, {
     key: 'exporationDate',
     type: 'date',
     label: 'Expiration date',
-    value: '2017-12-12'
+    value: ''
   }, {
     key: 'cvvNumber',
     type: 'cvvNumber',
     label: 'CVV Number',
-    value: '123'
+    value: ''
   }, {
     key: 'storeCard',
     type: 'bool',

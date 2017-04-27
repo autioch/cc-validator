@@ -18,11 +18,13 @@
   }
 }
 
+.c-field__header {}
+
 .c-field__input {
   outline: 0;
   border: solid 1px transparent;
   border-bottom-color: #aaa;
-  padding: .25em .5em;
+  padding: .25em 0;
   margin-top: .5em;
   box-sizing: border-box;
   transition: border-bottom-color 250ms;

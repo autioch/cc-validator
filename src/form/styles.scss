@@ -8,18 +8,29 @@
 
   /* Scope mixes should be in the scope that changes its state. */
   &:not(.is-valid) {
-    >.m-form__submit  {
+    /* Overwrites hover - more specific. */
+    > .m-form__submit  {
       color: #aaa;
+      border-color: #aaa;
+      cursor: not-allowed;
     }
   }
 }
 
 .m-form__header {
   font-size: 1.2em;
-  margin: 1em 0;
+  margin: 2em 0;
 }
 
 .m-form__submit {
+  display: inline-block;
+  border: solid 1px #aaa;
+  cursor: pointer;
+  padding: .25em .5em;
+  user-select: none;
 
-
+  &:hover {
+    color: #000;
+    border-color: #000;
+  }
 }
