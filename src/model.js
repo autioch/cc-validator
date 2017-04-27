@@ -19,7 +19,7 @@ function AppModel() {
   this.storeModel.on('change:isSaving', (storeModel, isSaving) => this.formModel.set('locked', isSaving));
 
   this.storeModel.on('change:isSaved', (storeModel, isSaved) => this.messageModel.set('visible', isSaved));
-  this.storeModel.on('change:isSaved', (storeModel, isSaved) => this.formModel.set('visible', isSaved));
+  this.storeModel.on('change:isSaved', (storeModel, isSaved) => this.formModel.set('visible', !isSaved));
 
   this.formModel.on('save', (formData) => this.storeModel.save(formData));
 
@@ -27,7 +27,11 @@ function AppModel() {
   const userEmailModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'userEmail');
   const storeCardModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'storeCard');
 
-  storeCardModel.on('change:value', (__, value) => userEmailModel.set('visible', !!value));
+  storeCardModel.on('change:value', (__, value) => {
+    const storeCard = !!value;
+
+    userEmailModel.set('visible', storeCard).set('required', storeCard);
+  });
 }
 
 module.exports = AppModel;

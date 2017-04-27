@@ -2,7 +2,7 @@ const { merge } = require('utils');
 const { Model } = require('components');
 const { modelFactory: fieldModelFactory } = require('./field');
 
-function CcValidatorModel(config, fields) {
+function FormModel(config, fields) {
   Model.call(this);
   this.fields = fields.map((field) => {
     const fieldModel = fieldModelFactory(field);
@@ -15,11 +15,11 @@ function CcValidatorModel(config, fields) {
   this.on('change:value', this.syncValid, this);
 }
 
-CcValidatorModel.prototype = merge(Model.prototype, {
-  constructor: CcValidatorModel,
+FormModel.prototype = merge(Model.prototype, {
+  constructor: FormModel,
   defaultConfig() {
     return {
-      valid: true,
+      valid: false,
       locked: false,
       visible: true
     };
@@ -28,7 +28,9 @@ CcValidatorModel.prototype = merge(Model.prototype, {
     this.set('valid', this.validate());
   },
   validate() {
-    return this.fields.every((fieldModel) => fieldModel.get('valid'));
+    return this.fields
+      .filter((fieldModel) => fieldModel.get('required'))
+      .every((fieldModel) => fieldModel.get('valid'));
   },
   serialize() {
     return this.fields.map((fieldModel) => fieldModel.serialize());
@@ -43,4 +45,4 @@ CcValidatorModel.prototype = merge(Model.prototype, {
   }
 });
 
-module.exports = CcValidatorModel;
+module.exports = FormModel;

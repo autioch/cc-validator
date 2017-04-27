@@ -11,7 +11,7 @@ function BooleanFieldView(model) {
 BooleanFieldView.prototype = merge(View.prototype, {
   tagName: 'label',
   className: 'c-field c-field__boolean',
-  props: ['visible', 'valid'],
+  props: ['visible', 'valid', 'fresh'],
   render() {
     empty(this.el);
     this.el.appendChild(this.getInputEl());

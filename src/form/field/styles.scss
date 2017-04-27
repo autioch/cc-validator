@@ -6,7 +6,7 @@
     display: block;
   }
 
-  &:not(.is-valid) {
+  &:not(.is-fresh):not(.is-valid) {
     background: #fa6;
   }
 }

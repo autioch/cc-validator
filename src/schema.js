@@ -23,12 +23,14 @@ module.exports = {
     key: 'storeCard',
     type: 'bool',
     label: 'Store the card',
-    value: false
+    value: false,
+    required: false
   }, {
     key: 'userEmail',
     type: 'email',
     label: 'Email',
     visible: false,
-    value: ''
+    value: '',
+    required: false
   }]
 };

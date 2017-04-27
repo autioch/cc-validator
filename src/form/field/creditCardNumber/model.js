@@ -8,7 +8,11 @@ function CreditCardNumberFieldModel(config = {}) {
 CreditCardNumberFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: CreditCardNumberFieldModel,
   validate() {
-    return true;
+    if (!this.get('required')) {
+      return true;
+    }
+
+    return this.get('value').length > 3;
   }
 });
 

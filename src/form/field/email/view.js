@@ -11,7 +11,7 @@ function EmailFieldView(model) {
 EmailFieldView.prototype = merge(View.prototype, {
   tagName: 'label',
   className: 'c-field c-field__boolean',
-  props: ['visible', 'valid'],
+  props: ['visible', 'valid', 'fresh'],
   render() {
     empty(this.el);
     this.el.appendChild(this.getInputEl());
@@ -26,6 +26,8 @@ EmailFieldView.prototype = merge(View.prototype, {
 
       /* Those aren't unbound - lack of time. */
       this.inputEl.addEventListener('change', this.syncValue.bind(this));
+      this.inputEl.addEventListener('keyup', this.syncValue.bind(this));
+      this.inputEl.addEventListener('blur', this.syncValue.bind(this));
     }
 
     return this.inputEl;

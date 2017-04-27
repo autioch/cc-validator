@@ -1,0 +1,20 @@
+.m-form {
+
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
+
+  /* Scope mixes should be in the scope that changes its state. */
+  &:not(.is-valid) {
+    >.m-form__submit  {
+      color: #aaa;
+    }
+  }
+}
+
+.m-form__submit {
+
+
+}

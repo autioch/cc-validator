@@ -8,7 +8,11 @@ function BooleanFieldModel(config = {}) {
 BooleanFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: BooleanFieldModel,
   validate() {
-    return true;
+    if (!this.get('required')) {
+      return true;
+    }
+
+    return this.get('value');
   }
 });
 

@@ -8,7 +8,13 @@ function CvvNumberFieldModel(config = {}) {
 CvvNumberFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: CvvNumberFieldModel,
   validate() {
-    return true;
+    if (!this.get('required')) {
+      return true;
+    }
+    const value = this.get('value');
+    const expectedValue = parseInt(value, 10);
+
+    return value.length === 3 && !isNaN(expectedValue) && expectedValue.toString() === value;
   }
 });
 
