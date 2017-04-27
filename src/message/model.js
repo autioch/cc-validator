@@ -9,7 +9,8 @@ MessageModel.prototype = merge(Model.prototype, {
   constructor: MessageModel,
   defaultConfig() {
     return {
-      message: 'Success'
+      message: 'Success',
+      visible: false
     };
   }
 });

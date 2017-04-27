@@ -1,0 +1,7 @@
+.m-message {
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
+}

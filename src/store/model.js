@@ -18,23 +18,15 @@ StoreModel.prototype = merge(Model.prototype, {
     };
   },
   save(dataToSave) {
-    if (!this.config.isSaving) {
-      this.config.isSaving = true;
-      this.config.savePromise = this.requestSave(dataToSave).then(() => {
-        this.config.isSaving = false;
-        this.config.isSaved = true;
-        this.config.savePromise = null;
-      });
+    if (!this.get('isSaving')) {
+      this.set('isSaving', true);
+      const savePromise = new Promise((resolve) => setTimeout(() => resolve(dataToSave), this.get('waitTime')))
+        .then(() => this.set('isSaving', false).set('isSaved', true).set('savePromise', null));
+
+      this.set('savePromise', savePromise);
     }
 
-    return this.config.savePromise;
-  },
-
-  /* This should a service, but not enough time. */
-  requestSave(dataToSave) {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(dataToSave), this.waitTime);
-    });
+    return this.get('savePromise');
   }
 });
 

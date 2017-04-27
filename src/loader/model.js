@@ -9,7 +9,8 @@ LoaderModel.prototype = merge(Model.prototype, {
   constructor: LoaderModel,
   defaultConfig() {
     return {
-      message: 'Success'
+      message: 'Success',
+      visible: false
     };
   }
 });

@@ -1,7 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
 /* Due to time limit, implemented instead of observable. */
 function Emitter() {
-  this.__listeners = [];
+  this.__listeners = {};
 }
 
 Emitter.prototype = {

@@ -1,0 +1,7 @@
+.m-loader {
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
+}

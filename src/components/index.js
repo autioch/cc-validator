@@ -1,4 +1,5 @@
 module.exports = {
   Emitter: require('./emitter'),
-  Model: require('./model')
+  Model: require('./model'),
+  View: require('./view')
 };

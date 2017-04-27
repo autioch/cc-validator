@@ -1,36 +1,18 @@
 /* eslint no-console: 0 */
-const { config, fields, waitTime } = require('schema');
-const FormModel = require('form/model');
-const StoreModel = require('store/model');
-const LoaderModel = require('loader/model');
-const MessageModel = require('message/model');
+const AppModel = require('./model');
+const AppView = require('./view');
 
-const formModel = new FormModel(config, fields);
-const storeModel = new StoreModel({
-  waitTime
-});
+const appModel = new AppModel();
+const appView = new AppView(appModel);
 
-formModel.on('save', (formData) => {
-  formModel.set('locked', true);
-
-  /* TODO Show loader */
-  const loaderModel = new LoaderModel();
-
-  storeModel
-    .save(formData)
-    .then(() => {
-      /* TODO Hide loader */
-      formModel.set('visible', false);
-      const messageModel = new MessageModel();
-    });
-});
+const container = document.body;
 
 /* Some quick tests. */
-formModel.on('change:valid', (...params) => console.log(params));
-formModel.set('valid', false);
-formModel.on('save', (formData) => console.log(formData));
 
-formModel.fields[0].set('valid', false);
-formModel.fields[0].set('valid', true);
+appModel.formModel.on('change:valid', (...params) => console.log(params));
+appModel.formModel.set('valid', false);
 
-formModel.save();
+appModel.formModel.fields[0].set('valid', false);
+appModel.formModel.fields[0].set('valid', true);
+
+appModel.formModel.save();

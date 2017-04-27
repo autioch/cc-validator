@@ -3,6 +3,7 @@ const waitTime = 2000;
 module.exports = {
   config: {},
   waitTime,
+  successMessage: 'Success',
   fields: [{
     key: 'ccNumber',
     type: 'creditCardNumber',
