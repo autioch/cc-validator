@@ -1,5 +1,6 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
+const validate = require('./validate');
 
 function BooleanFieldModel(config = {}) {
   FieldModel.call(this, config);
@@ -12,7 +13,7 @@ BooleanFieldModel.prototype = merge(FieldModel.prototype, {
       return true;
     }
 
-    return this.get('value');
+    return validate(this.get('value'));
   }
 });
 

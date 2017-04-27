@@ -1,5 +1,6 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
+const validate = require('./validate');
 
 function CvvNumberFieldModel(config = {}) {
   FieldModel.call(this, config);
@@ -11,10 +12,8 @@ CvvNumberFieldModel.prototype = merge(FieldModel.prototype, {
     if (!this.get('required')) {
       return true;
     }
-    const value = this.get('value');
-    const expectedValue = parseInt(value, 10);
 
-    return value.length === 3 && !isNaN(expectedValue) && expectedValue.toString() === value;
+    return validate(this.get('value'));
   }
 });
 

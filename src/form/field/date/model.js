@@ -1,7 +1,6 @@
 const { merge } = require('utils');
 const FieldModel = require('../model');
-
-const dateRegex = /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
+const validate = require('./validate');
 
 function DateFieldModel(config = {}) {
   FieldModel.call(this, config);
@@ -14,7 +13,7 @@ DateFieldModel.prototype = merge(FieldModel.prototype, {
       return true;
     }
 
-    return dateRegex.test(this.get('value'));
+    return validate(this.get('value'));
   }
 });
 
