@@ -14,12 +14,12 @@ EmailFieldView.prototype = merge(View.prototype, {
   props: ['visible', 'valid', 'fresh'],
   render() {
     empty(this.el);
+    this.el.appendChild(tag('div.c-field__header', this.model.get('label')));
     this.el.appendChild(this.getInputEl());
-    this.el.appendChild(tag('span', this.model.get('label')));
   },
   getInputEl() {
     if (!this.inputEl) {
-      this.inputEl = tag('input', {
+      this.inputEl = tag('input.c-field__input', {
         type: 'text',
         value: this.model.get('value')
       });

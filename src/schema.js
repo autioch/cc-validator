@@ -2,7 +2,7 @@ const waitTime = 2000;
 
 module.exports = {
   config: {
-    header: 'Please fill in the required fields'
+    header: 'Please fill in the required fields.'
   },
   waitTime,
   successMessage: 'Success!',

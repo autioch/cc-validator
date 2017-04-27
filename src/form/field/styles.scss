@@ -1,12 +1,39 @@
 .c-field {
 
   display: none;
+  margin-bottom: 2em;
+  border-left: solid 1px #aaa;
+  padding-left: 1em;
 
   &.is-visible {
     display: block;
   }
 
   &:not(.is-fresh):not(.is-valid) {
-    background: #fa6;
+    border-left-color: #f00;
+
+    > .c-field__input {
+      border-bottom-color: #f00;
+    }
+  }
+}
+
+.c-field__input {
+  outline: 0;
+  border: solid 1px transparent;
+  border-bottom-color: #aaa;
+  padding: .25em .5em;
+  margin-top: .5em;
+  box-sizing: border-box;
+  transition: border-bottom-color 250ms;
+
+  &:focus {
+    border-bottom-color: #3399ff;
+  }
+
+
+  /* Shame on me, I'm a bit tired. */
+  &[type="text"] {
+    width: 100%;
   }
 }
