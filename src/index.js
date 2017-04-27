@@ -5,8 +5,6 @@ const AppView = require('./view');
 const appModel = new AppModel();
 const appView = new AppView(appModel);
 
-const container = document.body;
-
 /* Some quick tests. */
 
 appModel.formModel.on('change:valid', (...params) => console.log(params));

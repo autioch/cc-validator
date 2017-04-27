@@ -1,3 +1,5 @@
+require('./styles');
+
 const ModelsTypes = {
   bool: require('./bool/model'),
   creditCardNumber: require('./creditCardNumber/model'),
@@ -7,12 +9,11 @@ const ModelsTypes = {
 };
 
 const ViewTypes = {
-  bool: require('./bool/view')
-
-  // creditCardNumber: require('./creditCardNumber/view'),
-  // cvvNumber: require('./cvvNumber/view'),
-  // date: require('./date/view'),
-  // email: require('./email/view')
+  bool: require('./bool/view'),
+  creditCardNumber: require('./creditCardNumber/view'),
+  cvvNumber: require('./cvvNumber/view'),
+  date: require('./date/view'),
+  email: require('./email/view')
 };
 
 module.exports = {

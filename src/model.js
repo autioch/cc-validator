@@ -22,6 +22,12 @@ function AppModel() {
   this.storeModel.on('change:isSaved', (storeModel, isSaved) => this.formModel.set('visible', isSaved));
 
   this.formModel.on('save', (formData) => this.storeModel.save(formData));
+
+  /* Non-generic part of the application - lack of time. */
+  const userEmailModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'userEmail');
+  const storeCardModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'storeCard');
+
+  storeCardModel.on('change:value', (__, value) => userEmailModel.set('visible', !!value));
 }
 
 module.exports = AppModel;

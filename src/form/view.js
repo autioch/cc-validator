@@ -12,7 +12,7 @@ LoaderView.prototype = merge(View.prototype, {
   className: 'm-form',
   props: ['visible'],
   render() {
-    this.subviews = this.model.fields.map((fieldModel) => fieldViewFactory(fieldModel)).filter((a) => a);
+    this.subviews = this.model.fields.map((fieldModel) => fieldViewFactory(fieldModel));
 
     this.subviews.forEach((subview) => this.el.appendChild(subview.el));
   }

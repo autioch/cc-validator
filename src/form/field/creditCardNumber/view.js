@@ -3,12 +3,11 @@ const { View } = require('components');
 
 require('./styles');
 
-function BooleanFieldView(model) {
+function CreditCardNumberFieldView(model) {
   View.call(this, model);
-  this.el.checked = this.model.get('value');
 }
 
-BooleanFieldView.prototype = merge(View.prototype, {
+CreditCardNumberFieldView.prototype = merge(View.prototype, {
   tagName: 'label',
   className: 'c-field c-field__boolean',
   props: ['visible', 'valid'],
@@ -20,7 +19,7 @@ BooleanFieldView.prototype = merge(View.prototype, {
   getInputEl() {
     if (!this.inputEl) {
       this.inputEl = tag('input', {
-        type: 'checkbox',
+        type: 'text',
         value: this.model.get('value')
       });
 
@@ -31,8 +30,8 @@ BooleanFieldView.prototype = merge(View.prototype, {
     return this.inputEl;
   },
   syncValue() {
-    this.model.set('value', !!this.inputEl.checked);
+    this.model.set('value', this.inputEl.value);
   }
 });
 
-module.exports = BooleanFieldView;
+module.exports = CreditCardNumberFieldView;

@@ -3,7 +3,7 @@ const { Model } = require('components');
 
 const defaultConfig = {
   key: null,
-  value: false,
+  value: null,
   label: '',
   visible: true,
   required: true,

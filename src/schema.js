@@ -7,24 +7,28 @@ module.exports = {
   fields: [{
     key: 'ccNumber',
     type: 'creditCardNumber',
-    label: 'Credit card number'
+    label: 'Credit card number',
+    value: ''
   }, {
     key: 'exporationDate',
     type: 'date',
-    label: 'Expiration date'
+    label: 'Expiration date',
+    value: ''
   }, {
     key: 'cvvNumber',
     type: 'cvvNumber',
-    label: 'CVV Number'
+    label: 'CVV Number',
+    value: ''
   }, {
     key: 'storeCard',
     type: 'bool',
     label: 'Store the card',
     value: false
   }, {
-    key: 'email',
+    key: 'userEmail',
     type: 'email',
     label: 'Email',
-    visible: false
+    visible: false,
+    value: ''
   }]
 };

@@ -1,0 +1,12 @@
+.c-field {
+
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
+
+  &:not(.is-valid) {
+    background: #fa6;
+  }
+}
