@@ -1,0 +1,23 @@
+{
+  "name": "cc-validator",
+  "version": "1.0.0-0",
+  "description": "Credic card validator",
+  "keywords": [
+    "credit card",
+    "ccv"
+  ],
+  "bugs": {
+    "url": "https://github.com/autioch/cc-validator/issues"
+  },
+  "author": "autioch@gmail.com",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autioch/cc-validator.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {}
+}
