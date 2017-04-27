@@ -1,24 +1,15 @@
-const { merge, clone } = require('utils');
-
-const defaultConfig = {
-  value: '',
-  label: '',
-  visible: true,
-  required: true
-};
+const { merge } = require('utils');
+const FieldModel = require('../model');
 
 function DateFieldModel(config) {
-  this.config = merge(defaultConfig, config);
+  FieldModel.call(this, config);
 }
 
-DateFieldModel.prototype = {
+DateFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: DateFieldModel,
   validate() {
     return true;
-  },
-  serialize() {
-    return clone(this.config);
   }
-};
+});
 
 module.exports = DateFieldModel;

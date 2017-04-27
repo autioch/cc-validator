@@ -1,24 +1,15 @@
-const { merge, clone } = require('utils');
-
-const defaultConfig = {
-  value: '',
-  label: '',
-  visible: true,
-  required: true
-};
+const { merge } = require('utils');
+const FieldModel = require('../model');
 
 function EmailFieldModel(config) {
-  this.config = merge(defaultConfig, config);
+  FieldModel.call(this, config);
 }
 
-EmailFieldModel.prototype = {
+EmailFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: EmailFieldModel,
   validate() {
     return true;
-  },
-  serialize() {
-    return clone(this.config);
   }
-};
+});
 
 module.exports = EmailFieldModel;

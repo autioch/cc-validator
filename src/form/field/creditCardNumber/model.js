@@ -1,24 +1,15 @@
-const { merge, clone } = require('utils');
-
-const defaultConfig = {
-  value: '',
-  label: '',
-  visible: true,
-  required: true
-};
+const { merge } = require('utils');
+const FieldModel = require('../model');
 
 function CreditCardNumberFieldModel(config) {
-  this.config = merge(defaultConfig, config);
+  FieldModel.call(this, config);
 }
 
-CreditCardNumberFieldModel.prototype = {
+CreditCardNumberFieldModel.prototype = merge(FieldModel.prototype, {
   constructor: CreditCardNumberFieldModel,
   validate() {
     return true;
-  },
-  serialize() {
-    return clone(this.config);
   }
-};
+});
 
 module.exports = CreditCardNumberFieldModel;
