@@ -2,6 +2,8 @@ const MessageView = require('./message/view');
 const LoaderView = require('./loader/view');
 const FormView = require('./form/view');
 
+require('./styles');
+
 const container = document.body;
 
 function AppView(appModel) {

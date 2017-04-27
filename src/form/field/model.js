@@ -12,7 +12,7 @@ const defaultConfig = {
 };
 
 function FieldModel(config = {}) {
-  Model.call(this);
+  Model.call(this, config);
   this.config = merge(defaultConfig, config);
   this.set('valid', this.validate());
   this.on('change:value', this.syncValid, this);

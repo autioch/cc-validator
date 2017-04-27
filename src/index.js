@@ -4,3 +4,6 @@ const AppView = require('./view');
 
 const appModel = new AppModel();
 const appView = new AppView(appModel);  // eslint-disable-line no-unused-vars
+
+/* For testing. */
+window.appModel = appModel;

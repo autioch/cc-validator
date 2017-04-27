@@ -13,6 +13,7 @@ FormView.prototype = merge(View.prototype, {
   className: 'm-form',
   props: ['visible', 'locked', 'valid'],
   render() {
+    this.el.appendChild(tag('header', this.model.get('header')));
     this.subviews = this.model.fields.map((fieldModel) => fieldViewFactory(fieldModel));
 
     this.subviews.forEach((subview) => this.el.appendChild(subview.el));

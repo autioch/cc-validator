@@ -196,11 +196,6 @@ rules:
     - 1
   variable-for-property:
     - 0
-    -
-      'properties':
-        - 'color'
-        - 'background-color'
-        - 'border-color'
   variable-name-format:
     - 1
     - convention: ^((is|has|m|s|c)-)?([a-z]+-?)+[a-z]+(__([a-z]+-?)+[a-z]+)?(--([a-z0-9]+-?)+([a-z0-9]+)?)?$

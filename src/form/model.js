@@ -3,7 +3,7 @@ const { Model } = require('components');
 const { modelFactory: fieldModelFactory } = require('./field');
 
 function FormModel(config, fields) {
-  Model.call(this);
+  Model.call(this, config);
   this.fields = fields.map((field) => {
     const fieldModel = fieldModelFactory(field);
 
@@ -21,7 +21,8 @@ FormModel.prototype = merge(Model.prototype, {
     return {
       valid: false,
       locked: false,
-      visible: true
+      visible: true,
+      header: ''
     };
   },
   syncValid() {

@@ -1,8 +1,13 @@
 html {
-  font: normal 14px Consolas, Courier;
+  font: normal 14px Verdana;
   color: #444;
 }
 
 body {
   margin: 0;
+
+  @media (min-width: 600px) {
+    width: 600px;
+    margin: 0 auto;
+  }
 }
