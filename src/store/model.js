@@ -1,22 +1,22 @@
 const { merge } = require('utils');
-const { Emitter } = require('components');
-
-const defaultConfig = {
-  valid: true,
-  isSaving: false,
-  isSaved: false,
-  savePromise: null,
-  savedData: null,
-  waitTime: 0
-};
+const { Model } = require('components');
 
 function StoreModel(config = {}) {
-  Emitter.call(this);
-  this.config = merge(defaultConfig, config);
+  Model.call(this, config);
 }
 
-StoreModel.prototype = {
+StoreModel.prototype = merge(Model.prototype, {
   constructor: StoreModel,
+  defaultConfig() {
+    return {
+      valid: true,
+      isSaving: false,
+      isSaved: false,
+      savePromise: null,
+      savedData: null,
+      waitTime: 0
+    };
+  },
   save(dataToSave) {
     if (!this.config.isSaving) {
       this.config.isSaving = true;
@@ -36,6 +36,6 @@ StoreModel.prototype = {
       setTimeout(() => resolve(dataToSave), this.waitTime);
     });
   }
-};
+});
 
 module.exports = StoreModel;

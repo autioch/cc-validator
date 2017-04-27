@@ -1,4 +1,6 @@
 module.exports = {
   clone: require('./clone'),
-  merge: require('./merge')
+  forOwn: require('./forOwn'),
+  merge: require('./merge'),
+  tag: require('./tag')
 };

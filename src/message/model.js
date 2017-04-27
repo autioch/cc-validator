@@ -1,15 +1,17 @@
 const { merge } = require('utils');
-
-const defaultConfig = {
-  message: 'Success'
-};
+const { Model } = require('components');
 
 function MessageModel(config = {}) {
-  this.config = merge(defaultConfig, config);
+  Model.call(this, config);
 }
 
-MessageModel.prototype = {
-  constructor: MessageModel
-};
+MessageModel.prototype = merge(Model.prototype, {
+  constructor: MessageModel,
+  defaultConfig() {
+    return {
+      message: 'Success'
+    };
+  }
+});
 
 module.exports = MessageModel;

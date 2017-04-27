@@ -1,3 +1,4 @@
 module.exports = {
-  Emitter: require('./emitter')
+  Emitter: require('./emitter'),
+  Model: require('./model')
 };

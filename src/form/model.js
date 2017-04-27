@@ -1,16 +1,9 @@
 const { merge } = require('utils');
-const { Emitter } = require('components');
+const { Model } = require('components');
 const { modelFactory: fieldModelFactory } = require('./field');
 
-const defaultConfig = {
-  valid: true,
-  locked: false,
-  visible: true
-};
-
 function CcValidatorModel(config, fields) {
-  Emitter.call(this);
-  this.config = merge(defaultConfig, config);
+  Model.call(this);
   this.fields = fields.map((field) => {
     const fieldModel = fieldModelFactory(field);
 
@@ -22,22 +15,20 @@ function CcValidatorModel(config, fields) {
   this.on('change:value', this.syncValid, this);
 }
 
-CcValidatorModel.prototype = merge(Emitter.prototype, {
+CcValidatorModel.prototype = merge(Model.prototype, {
   constructor: CcValidatorModel,
-
+  defaultConfig() {
+    return {
+      valid: true,
+      locked: false,
+      visible: true
+    };
+  },
   syncValid() {
     this.set('valid', this.validate());
   },
   validate() {
     return this.fields.every((fieldModel) => fieldModel.get('valid'));
-  },
-  set(property, value) {
-    this.config[property] = value;
-
-    return this.emit(`change:${property}`, this, value);
-  },
-  get(property) {
-    return this.config[property];
   },
   serialize() {
     return this.fields.map((fieldModel) => fieldModel.serialize());

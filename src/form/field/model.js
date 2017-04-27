@@ -1,5 +1,5 @@
-const { merge, clone } = require('utils');
-const { Emitter } = require('components');
+const { merge } = require('utils');
+const { Model } = require('components');
 
 const defaultConfig = {
   key: null,
@@ -11,30 +11,19 @@ const defaultConfig = {
 };
 
 function FieldModel(config = {}) {
-  Emitter.call(this);
+  Model.call(this);
   this.config = merge(defaultConfig, config);
   this.syncValid();
   this.on('change:value', this.syncValid, this);
 }
 
-FieldModel.prototype = merge(Emitter.prototype, {
+FieldModel.prototype = merge(Model.prototype, {
   constructor: FieldModel,
   syncValid() {
     this.set('valid', this.validate());
   },
   validate() {
     return true;
-  },
-  set(property, value) {
-    this.config[property] = value;
-
-    return this.emit(`change:${property}`, this, value);
-  },
-  get(property) {
-    return this.config[property];
-  },
-  serialize() {
-    return clone(this.config);
   }
 });
 
