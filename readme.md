@@ -1,8 +1,8 @@
 # Credit card validator
 
 
-## Usage
-Since this is an example project, its `dist` folder has been added to the repository. In it can be found `index.html` file.
+## Demo version
+Since this is an example project, its `docs` folder has been added to the repository. It should be accessible here: https://autioch.github.io/cc-validator/
 
 
 ## Installation, usage and development
@@ -17,10 +17,12 @@ Since this is an example project, its `dist` folder has been added to the reposi
 2. Configuration of displayed fields and other details can be found in `src/schema.js`.
 3. Whole app model is available (for development)
 
+## Browser support
+Tested in latest Chrome, Firefox and Edge.
 
 ## Project information
 1. Node style `require` used instead of `import` for compatibility with node without extra tools.
 2. Classic prototypical inheritance instead of ES6 classes.
 3. Some shortcuts were made due to time limit for the project.
-4. Credit card number expect 16 digits - there are some exceptions, however I didn't have enough time to implement them. There is however place to improve validation for each field type.
+4. Credit card number expects just 16 digits. I'm out of time to implement the mod 10 algorithm and to check for correct number of digits.
 5. No time left for tests, however validation methods are moved to separate files, so adding tests should be really simple.
