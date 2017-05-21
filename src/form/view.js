@@ -1,6 +1,6 @@
 const { merge, tag, toggleClass } = require('utils');
 const { View } = require('components');
-const { viewFactory: fieldViewFactory } = require('./field');
+const viewFactory = require('./field/viewFactory');
 
 require('./styles');
 
@@ -14,7 +14,7 @@ FormView.prototype = merge(View.prototype, {
   props: ['visible', 'locked', 'valid'],
   render() {
     this.el.appendChild(tag('header.m-form__header', this.model.get('header')));
-    this.subviews = this.model.fields.map((fieldModel) => fieldViewFactory(fieldModel));
+    this.subviews = this.model.fields.map((fieldModel) => viewFactory(fieldModel));
 
     this.subviews.forEach((subview) => this.el.appendChild(subview.el));
 
@@ -22,7 +22,7 @@ FormView.prototype = merge(View.prototype, {
   },
   getSubmitEl() {
     if (!this.submitEl) {
-      this.submitEl = tag('span.m-form__submit', 'Send');
+      this.submitEl = tag('span.m-form__submit', this.model.config.submitLabel);
 
       /* Those aren't unbound - lack of time. */
       this.submitEl.addEventListener('click', () => this.model.save());

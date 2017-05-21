@@ -2,7 +2,8 @@ const waitTime = 2000;
 
 module.exports = {
   config: {
-    header: 'Please fill in the required fields.'
+    header: 'No data is stored. This is only validation.',
+    submitLabel: 'Confirm validation'
   },
   waitTime,
   successMessage: 'Success!',
@@ -12,7 +13,7 @@ module.exports = {
     label: 'Credit card number',
     value: ''
   }, {
-    key: 'exporationDate',
+    key: 'expirationDate',
     type: 'date',
     label: 'Expiration date',
     value: ''
@@ -24,7 +25,7 @@ module.exports = {
   }, {
     key: 'storeCard',
     type: 'bool',
-    label: 'Store the card',
+    label: 'Validate email',
     value: false,
     required: false
   }, {

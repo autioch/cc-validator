@@ -1,6 +1,6 @@
 {
   "name": "cc-validator",
-  "version": "1.0.0-0",
+  "version": "1.0.1",
   "description": "Credic card validator",
   "keywords": [
     "credit card",
@@ -36,6 +36,7 @@
     "sass-lint": "^1.10.2"
   },
   "dependencies": {
+    "app-module-path": "^2.2.0",
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.9",

@@ -24,8 +24,8 @@ function AppModel() {
   this.formModel.on('save', (formData) => this.storeModel.save(formData));
 
   /* Non-generic part of the application - lack of time. */
-  const userEmailModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'userEmail');
-  const storeCardModel = this.formModel.fields.find((fieldModel) => fieldModel.get('key') === 'storeCard');
+  const userEmailModel = this.formModel.getField('userEmail');
+  const storeCardModel = this.formModel.getField('storeCard');
 
   storeCardModel.on('change:value', (__, value) => {
     const storeCard = !!value;

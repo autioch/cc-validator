@@ -10,7 +10,7 @@ Since this is an example project, its `docs` folder has been added to the reposi
 2. In project directory run `npm install` (node required).
 3. For usage via browser - run `npm run build:watch` and access project via `localhost:8080`.
 4. For publishing, run `npm run build:production`. This will place minified version in the dist folder.
-5. For CLI usage, this package is not yet ready - webpack allows absolute paths and require sass without extenstions.
+5. For cli/module usage, see `example/cli.js`
 
 ## Configuration
 1. Available field types are stored in `src/form/field`.

@@ -1,11 +1,11 @@
 const { merge } = require('utils');
 const { Model } = require('components');
-const { modelFactory: fieldModelFactory } = require('./field');
+const modelFactory = require('./field/modelFactory');
 
 function FormModel(config, fields) {
   Model.call(this, config);
   this.fields = fields.map((field) => {
-    const fieldModel = fieldModelFactory(field);
+    const fieldModel = modelFactory(field);
 
     fieldModel.on('change:valid', this.syncValid, this);
 
@@ -35,6 +35,18 @@ FormModel.prototype = merge(Model.prototype, {
   },
   serialize() {
     return this.fields.map((fieldModel) => fieldModel.serialize());
+  },
+  setFieldValue(key, value) {
+    const field = this.getField(key);
+
+    if (!field) {
+      throw Error(`FormModel does not have field ${key}.`);
+    }
+
+    field.set('value', value);
+  },
+  getField(key) {
+    return this.fields.find((fieldModel) => fieldModel.config.key === key);
   },
   save() {
     /* Extra check to not rely on other states (DOM). */
